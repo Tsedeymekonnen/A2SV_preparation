@@ -1,0 +1,18 @@
+class Solution {
+public:
+    
+    int numberOfArithmeticSlices(vector<int>& nums) {
+        int numSlices = 0;
+        int count = 0; // number of consecutive arithmetic triplets
+        for(int i = 0; i + 2 < nums.size(); ++i){
+            if(nums[i + 1] - nums[i] == nums[i + 2] - nums[i + 1]){
+                ++count;
+            }else{
+                numSlices += (count + 1) * count / 2;
+                count =  0;
+            }
+        }
+        numSlices += (count + 1) * count / 2;
+        return numSlices;
+    }
+};
