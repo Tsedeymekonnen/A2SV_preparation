@@ -1,0 +1,32 @@
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        int sum = 1;   
+        int sum2 = 1;  
+        int zeros = 0; 
+        for (int i = 0; i < nums.size(); i ++) {
+            sum *= nums[i];
+            if (nums[i] != 0) {
+                sum2 *= nums[i];
+            } else {
+                zeros ++;
+            }
+        }
+        if (zeros == nums.size()) {
+            sum2 = 0; 
+        }
+        vector<int> r;
+        for (int i = 0; i < nums.size(); i ++) {
+            if (nums[i] == 0) {
+                if (zeros > 1) {
+                    r.push_back(0);
+                } else {
+                    r.push_back(sum2);
+                }
+            } else {
+                r.push_back(sum / nums[i]);
+            }
+        }
+        return r;
+    }
+};
