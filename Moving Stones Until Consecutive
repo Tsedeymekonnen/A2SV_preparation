@@ -1,0 +1,18 @@
+class Solution {
+public:
+  vector<int> numMovesStones(int a, int b, int c) 
+{
+    int left=min(a,min(b,c));
+    int right=max(a,max(b,c));
+    int mid=(a!=left && a!=right )?a:(b!=left && b!=right)?b:c;
+    int lspace=mid-left-1;
+    int rspace=right-mid-1;
+    int max=lspace+rspace,min=0;
+    if(lspace==0 && rspace==0)min=0;
+    else if(lspace==0 || rspace==0)min=1;
+    else if(lspace==1 || rspace==1)min=1;
+    else min=2;
+    vector<int> ans{min,max};
+    return ans;
+}
+};
